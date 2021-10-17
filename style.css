@@ -1,0 +1,37 @@
+html {
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    margin-top: 3%;
+}
+
+.title > * {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    margin: auto;
+}
+.movie { 
+    margin:auto;
+    margin-top: 20px;
+    width: 80%;
+    text-align: center;
+}
+.card-container {
+    margin: auto;
+    width: 80%;
+    column-gap: 50px;
+}
+.card {
+    display: inline-block;
+    margin: auto;
+    width: 300px;
+    height: 400px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: yellow;
+}
