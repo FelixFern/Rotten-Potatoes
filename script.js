@@ -16,10 +16,9 @@ function getMovie(url) {
 function showMovie(data) {
     const card_container = document.getElementById('card-container');
     card_container.innerHTML = ''
-    console.log(card_container)
-
     data.forEach(movie => {
         const {title, poster_path, vote_average, overview} = movie;
+        console.log(title)
         const movieEl = document.createElement("div");
         movieEl.classList.add('card');
         movieEl.innerHTML = `
@@ -28,7 +27,7 @@ function showMovie(data) {
                     <div class="content">
                         <h2 class="movie-title">${title}</h2>
                         <p class="movie-desc">${overview}</p>
-                        <p>Rating : ${vote_average}</p>
+                        <p>Rating : <span class=${getColor(vote_average)}>${vote_average}</span></p>
                         <p><a href="#" class="movie-detail">Movie Detail</a></p>
                     </div>
                 </div>
@@ -36,6 +35,15 @@ function showMovie(data) {
             `
         console.log(movieEl)
         card_container.appendChild(movieEl);
-        console.log("test");
     })
+}
+
+function getColor(rating) {
+    if(rating >= 8) {
+        return "green"
+    } else if(rating >= 5) {
+        return "yellow"
+    } else {
+        return "red"
+    }
 }
