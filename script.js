@@ -2,12 +2,16 @@ const API_KEY = 'api_key=4a2f5c42b8d2cf6178787473ff9d8970';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const searchURL = BASE_URL + '/search/movie?'+ API_KEY;
+const SEARCH_URL = BASE_URL + '/search/movie?'+ API_KEY;
+
+var currentData = API_URL
+var currentView = "grid"
 
 gridView()
 
 function gridView() {
-    gridViewData(API_URL)
+    gridViewData(currentData)
+    currentView = "Grid"
 }
 
 function gridViewData(url) {
@@ -42,7 +46,8 @@ function showMovieGrid(data) {
 }
 
 function listView() {
-    listViewData(API_URL)
+    listViewData(currentData)
+    currentView = "List"
 }
 
 function listViewData(url) {
@@ -79,16 +84,18 @@ function showMovieList(data) {
     })
 }
 
-function getColor(rating) {
-    if(rating >= 8) {
-        return "green"
-    } else if(rating >= 5) {
-        return "yellow"
+function searchMovie() {
+    search = document.getElementById("search-bar").value;
+    console.log(search)
+    currentData = SEARCH_URL+'&query='+search
+    if(currentView == "Grid" && search != "") {
+        gridViewData(SEARCH_URL+'&query='+search)
     } else {
-        return "red"
+        listViewData(SEARCH_URL+'&query='+search)
     }
 }
 
 function percentage(rating) {
     return rating*10
 }
+
