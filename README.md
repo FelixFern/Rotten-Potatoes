@@ -14,7 +14,7 @@ Fitur-fitur yang tersedia pada website ini :
 - Grid View
 - List View 
 
-Tampilan dari Website :
+## Tampilan dari Website :
 ![Tampilan-1](tampilan/image-1.png)
 ![Tampilan-2](tampilan/image-2.png)
 ![Tampilan-3](tampilan/image-3.png)
