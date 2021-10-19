@@ -90,8 +90,10 @@ function searchMovie() {
     currentData = SEARCH_URL+'&query='+search
     if(currentView == "Grid" && search != "") {
         gridViewData(SEARCH_URL+'&query='+search)
-    } else {
+    } else if (currentView == "List" && search != "") {
         listViewData(SEARCH_URL+'&query='+search)
+    } else {
+        window.alert("Masukkan judul film yang ingin dicari");
     }
 }
 
@@ -99,3 +101,17 @@ function percentage(rating) {
     return rating*10
 }
 
+document.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        search = document.getElementById("search-bar").value;
+    console.log(search)
+    currentData = SEARCH_URL+'&query='+search
+    if(currentView == "Grid" && search != "") {
+        gridViewData(SEARCH_URL+'&query='+search)
+    } else if (currentView == "List" && search != "") {
+        listViewData(SEARCH_URL+'&query='+search)
+    } else {
+        window.alert("Masukkan judul film yang ingin dicari");
+    }
+    }
+});
