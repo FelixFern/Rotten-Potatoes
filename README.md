@@ -1,4 +1,4 @@
-# Rotten Potatoes, 
+# Rotten Potatoes - Movie List
 sebuah website yang menampilkan list dari film-film dengan menggunakan API dari https://www.themoviedb.org
 Data yang ditampilkan oleh Website berupa : 
 - Poster Film 
