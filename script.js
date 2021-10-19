@@ -4,37 +4,78 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?'+ API_KEY;
 
-getMovie(API_URL)
+gridView()
 
-function getMovie(url) {
+function gridView() {
+    gridViewData(API_URL)
+}
+
+function gridViewData(url) {
+    document.getElementById("grid").className = "current-toggle";
+    document.getElementById("list").className = "";
     fetch(url).then(res => res.json()).then(data => {
         console.log(data.results)
-        showMovie(data.results)
+        showMovieGrid(data.results)
     })
 }
 
-function showMovie(data) {
-    const card_container = document.getElementById('card-container');
-    card_container.innerHTML = ''
+function showMovieGrid(data) {
+    const movie_container = document.getElementById('movie-container');
+    movie_container.innerHTML = ''
     data.forEach(movie => {
-        const {title, poster_path, vote_average, overview} = movie;
+        const {title, poster_path, vote_average} = movie;
         console.log(title)
         const movieEl = document.createElement("div");
         movieEl.classList.add('card');
         movieEl.innerHTML = `
-                <div class="movie-card"> 
-                    <img src="${IMG_URL + poster_path}" alt="${title}">
-                    <div class="content">
-                        <h2 class="movie-title">${title}</h2>
-                        <p class="movie-desc">${overview}</p>
-                        <p>Rating : <span class=${getColor(vote_average)}>${vote_average}</span></p>
-                        <p><a href="#" class="movie-detail">Movie Detail</a></p>
-                    </div>
-                </div>
+            <img src="${IMG_URL + poster_path}" alt="" class="poster">
+            <div class="rating">
+                <img src="img/potato.png" alt="">
+                <p>${percentage(vote_average)} %</p>
+            </div>
+            <h2>${title}</h2>
                 
             `
         console.log(movieEl)
-        card_container.appendChild(movieEl);
+        movie_container.appendChild(movieEl);
+    })
+}
+
+function listView() {
+    listViewData(API_URL)
+}
+
+function listViewData(url) {
+    document.getElementById("list").className = "current-toggle";
+    document.getElementById("grid").className = "";
+    fetch(url).then(res => res.json()).then(data => {
+        console.log(data.results)
+        showMovieList(data.results)
+    })
+}
+function showMovieList(data) {
+    const movie_container = document.getElementById('movie-container');
+    movie_container.innerHTML = ''
+    data.forEach(movie => {
+        const {title, poster_path, vote_average, overview, genres, release_date} = movie;
+        console.log(title)
+        const movieEl = document.createElement("div");
+        movieEl.classList.add('list');
+        movieEl.innerHTML = `
+            <div class="list-left"><img class="poster-list" src="${IMG_URL + poster_path}" alt=""></div>
+            <div class="list-right">
+                <div class="rating">
+                    <img src="img/potato.png" alt="">
+                    <p>${percentage(vote_average)} %</p>
+                </div>
+                <h2>${title}</h2>
+                <p>${overview}</p>
+                <p>Release Date : ${release_date}</p>
+            </div>
+                
+            `
+        console.log(movieEl)
+        movie_container.appendChild(movieEl);
     })
 }
 
@@ -46,4 +87,8 @@ function getColor(rating) {
     } else {
         return "red"
     }
+}
+
+function percentage(rating) {
+    return rating*10
 }
