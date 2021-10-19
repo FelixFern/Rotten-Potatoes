@@ -67,7 +67,7 @@ function showMovieList(data) {
         const movieEl = document.createElement("div");
         movieEl.classList.add('list');
         movieEl.innerHTML = `
-            <div id=${counter} class="list-left"><img id=${counter}  class="poster-list" src="${IMG_URL + poster_path}" alt=""></div>
+            <div id=${counter} class="list-left"><img id=${counter} class="poster-list" src="${IMG_URL + poster_path}" alt=""></div>
             <div id=${counter} class="list-right">
                 <div id=${counter} class="rating">
                     <img id=${counter} src="img/potato.png" alt="">
@@ -94,9 +94,9 @@ document.addEventListener("keyup", function(event) {
         console.log(search)
         currentData = SEARCH_URL+'&query='+search
         if(currentView == "Grid" && search != "") {
-            gridViewData(SEARCH_URL+'&query='+search)
+            gridViewData(currentData)
         } else if (currentView == "List" && search != "") {
-            listViewData(SEARCH_URL+'&query='+search)
+            listViewData(currentData)
         } else {
             window.alert("Masukkan judul film yang ingin dicari");
         }
