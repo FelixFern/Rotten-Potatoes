@@ -6,6 +6,7 @@ Data yang ditampilkan oleh Website berupa :
 - Sinopsis
 - Rating
 - Release Date
+
 Fitur-fitur yang tersedia pada website ini : 
 - Searching Film 
 - Grid View
