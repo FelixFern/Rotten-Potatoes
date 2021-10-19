@@ -18,12 +18,15 @@ body {
 }
 nav {
     background-color: var(--brown-2);
-    height: 8vh;
+    height: 6vh;
+    width: 100%;
+    margin: auto;
+    z-index: 99;
+    position: relative;
 }
-
 .nav-container {
-    height: fit-content;
     width: 70%;
+    height: auto;
     margin: auto;
     display: flex;
 }
@@ -31,21 +34,18 @@ nav {
     margin: auto;
 } 
 .nav-container img {
-    height: 5.5vh;
+    top: 50%;
+    height: 4vh;
+    margin: auto;
     margin-top: 5px;
-    margin-right: 20px;
+    margin-right: 50px;
 }
 .nav-container img:hover {
     opacity: .9;
 }
-.search_component {
-    width: 50%;
-    height: 30%;
-    margin: auto;
-    text-align: center;
-}
 .search-bar { 
-    width: 80%;
+    margin: auto;
+    width: 50%;
     height: 1vh;
     border-radius: 5px;
     background-color: var(--brown-1);
@@ -57,33 +57,13 @@ nav {
     opacity: .8;
     color: white;
 }
-.search_button {
-    height: 3.7vh;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: auto;
-    border-radius: 5px;
-    background-color: var(--brown-1);
-    border: none;
-}
-.search_button i {
-    color: white;
-    font-size: 10px;
-}
-.search_button:hover {
-    cursor: pointer;
-    opacity: .8;
-}
-.nav-list {
-    float: right;
-}
 .nav-list li {
+    text-align: center;
     display: inline-block;
-    margin-right: 20px;
+    margin-left: 50px;
     font-weight: 600;
 }
 .nav-list a{
-    display: inline-block;
     color: white;
     text-decoration: none;
 }
@@ -98,19 +78,20 @@ nav {
 .header {
     display: inline-block;
     width: 100%;
-    height: fit-content;
+    height: 35px;
     margin-top: 35px;
+    display: block;
 }
 .brown-vertical-line {
-    height: 22px;
+    height: 20px;
     width: 5px;
+    margin: auto;
     background-color: var(--brown-1);
     display: inline-block;
     margin-right: 5px;
 }
 .header h1 { 
-    margin: 0;
-    padding: 0;
+    margin: auto;
     text-align: left;
     font-size: 25px;
     display: inline-block;
@@ -147,6 +128,9 @@ nav {
     margin: auto;
     margin-top: 20px;
 }
+#movie-id {
+    display: none;
+}
 /* Card */
 .card {
     margin: 0;
@@ -154,7 +138,7 @@ nav {
     margin-left: 20px;
     margin-top: 20px;
     width: 10vw;
-    height: 50vh;
+    height: 42vh;
     float: left;
 }
 .poster { 
@@ -185,13 +169,58 @@ nav {
     font-weight: 500;
 }
 .card:hover {
-    color: var(--brown-1);
+    color: var(--brown-2);
     cursor: pointer;
 }
 .card:hover .poster {
     filter: brightness(90%);
 }
-
+#popup {
+    display: none;
+    position: fixed;
+    margin-top: -20vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 110vh;
+    width: 100vw;
+}
+.popup-content {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 65%;
+    background-color: white;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    column-gap: 50px;
+}
+.right-side-popup {
+    margin: auto;
+    margin-right: 50px;
+    width: 70%
+}
+.right-side-popup h2 {
+    font-size: 30px;
+}
+.back-button {
+    background-color: var(--brown-1);
+    color: white;
+    border: none;
+    box-shadow: none;
+    padding: 5px 15px;
+}
+.back-button:hover {
+    opacity: .9;
+    cursor: pointer;
+}
+.popup-poster { 
+    height: 100%;
+    width: auto;
+}
 /* List */
 .list {
     width: 100%;
@@ -201,7 +230,8 @@ nav {
     line-height: 20px;
     overflow: hidden;
     margin-bottom: 30px;
-    margin-top: 40px;
+    margin-top: 15px;
+    float: left;
 }
 .poster-list {
     height: 30vh;
@@ -213,22 +243,76 @@ nav {
 .list-right h3 {
     font-size: 15px;
 }
-.list-right p{
-    height: 30%;
-    overflow: hidden;
+.overview {
+    max-height: 30%;
+    margin: auto;
 }
 .list:hover {
-    color: var(--brown-1);
+    color: var(--brown-2);
     cursor: pointer;
 }
 .list:hover .poster-list {
     filter: brightness(90%);
 }
 
+@media only screen and (max-width: 1250px) {
+    .nav-list {
+        display: none;
+    }
+    .search-bar {
+        width: 60%;
+        padding: 8px;
+        margin-top: 10px;
+    }
+    .search-bar::placeholder {
+        font-size: 10px;
+    }
+    .nav-container a {
+        width: 40%;
+        margin: auto;
+        margin-top: 8px;
+    }
+    .nav-container img {
+        width: 70%;
+        height: auto;
+        margin: auto;
+    }
+    .movie-container {
+        margin: auto;
+    }
+    .card {
+        width: 20vw;
+        height: 30vh;
+        margin-left: 10px;
+        margin-left: 10px;
+    }
+    .poster {
+        width: 20vw;
+    }
+    .card h2 {
+        font-size: 12px;
+    }
+    .list {
+        margin-top: 15px;
+        column-gap: 15px;
+        line-height: 15px;
+        margin-bottom: 0px;
+        height: fit-content;
+    }
+    .list h2 {
+        font-size: 16px;
+    }
+    .list p {
+        font-size: 12px;
+    }
+    .overview {
+        max-height: 5vh;
+        overflow: hidden;
+    }
+    .poster-list {
+        margin: auto;
+        width: 27vw;
+        height: auto;
+    }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    font-weight: 400;
-    font-size: 15px;
 }
