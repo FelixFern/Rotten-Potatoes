@@ -67,7 +67,7 @@ function showMovieList(data) {
         const movieEl = document.createElement("div");
         movieEl.classList.add('list');
         movieEl.innerHTML = `
-            <div id=${counter} class="list-left"><img class="poster-list" src="${IMG_URL + poster_path}" alt=""></div>
+            <div id=${counter} class="list-left"><img id=${counter}  class="poster-list" src="${IMG_URL + poster_path}" alt=""></div>
             <div id=${counter} class="list-right">
                 <div id=${counter} class="rating">
                     <img id=${counter} src="img/potato.png" alt="">
@@ -80,6 +80,7 @@ function showMovieList(data) {
             </div>       
             `
             movie_container.appendChild(movieEl);
+            counter += 1
     })
 }
 
